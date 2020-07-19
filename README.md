@@ -24,9 +24,9 @@ CMA is Spring Boot rest ful Api
 
 ## Routes List:
 
-### Manager
+### Manager (ADMIN credentials)
 
-* Add new user (ADMIN credentials)
+* Add new user
 
 EndPoint: -> [POST]  `/api/v1/manager/user`
 
@@ -39,15 +39,96 @@ body
  "email": "hresh@gayl.com",
  "password": "hreshnerigayl",
  "passwordConfirm": "hreshnerigayl",
- "role": {"id":"1", "name":"USER"}
+ "role": {"id":"1", "name":"ROLE_ADMIN"}
  }
  ```
 
-### Waiter
+* Add new empty table (empty means not assigned no one)
 
-* Get Tables assigned to him (ADMIN credentials)
+EndPoint: -> [POST] `/api/v1/manager/table`
+```
+{}
+```
+
+* Assign tables to waiter
+
+EndPoint: -> [POST] `/api/v1/manager/assign-tables`
+```
+{
+"tableIds": [1,2],
+"userId": 12
+}
+```
+
+* Create product
+
+EndPoint: -> [POST] `/api/v1/manager/product`
+```
+{
+	"name": "Tsiran"
+}
+```
+
+
+
+### Waiter (USER credentials)
+
+* Get Tables assigned to him
 
 EndPoint: -> [GET]  `/api/v1/waiter/tables`
+
+
+
+* Create order
+
+EndPoint: -> [POST]  `/api/v1/waiter/order`
+
+```
+{
+	"tableId": 3,
+	"status": "OPEN"
+}
+```
+
+
+
+* Update order
+
+EndPoint: -> [PUT]  `/api/v1/waiter/order`
+
+```
+{
+    "id": 2,
+	"tableId": 2,
+	"status": "CLOSED"
+}
+```
+
+
+* Create product in order
+
+EndPoint: -> [POST]  `api/v1/waiter/product-in-order`
+
+```
+{
+	"orderId": 1,
+	"productId": 1,
+	"amount": 2
+}
+```
+
+* Update product in order
+
+EndPoint: -> [PUT]  `api/v1/waiter/product-in-order`
+
+```
+{
+	"id": 1,
+	"orderId": 1,
+	"productId": 3,
+	"amount": 18
+}
+```
 
 
 ##Running the tests
@@ -64,3 +145,12 @@ environment: src/main/resources/application.properties<br />
 - spring.datasource.url=***
 - spring.datasource.username=***
 - spring.datasource.password=***
+
+------------------------------------------------------------------------
+`Note:   after running SQL script from resources you must have 2 users with role ADMIN and USER`
+
+admin login:        admin@mail.com
+admin password:     password
+
+user login:        user@mail.com
+user password:     password
