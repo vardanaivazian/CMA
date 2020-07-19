@@ -1,7 +1,9 @@
 package com.sflpro.cma.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -21,6 +23,8 @@ import java.util.Set;
 @Table(name = "orders")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Order {
 
@@ -28,7 +32,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long tableId;
+    private Integer tableId;
 
     @Convert(converter = OrderStatusConverter.class)
     private OrderStatus status;

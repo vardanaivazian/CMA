@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Set;
 
-public interface TableRepository extends JpaRepository<Table, Long> {
+public interface TableRepository extends JpaRepository<Table, Integer> {
 
     Set<Table> findByUserId(Long userId);
 

@@ -16,7 +16,7 @@ import static org.springframework.http.HttpStatus.CONFLICT;
 @ControllerAdvice
 public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({PasswordMismatchException.class, UserAlreadyExistException.class})
+    @ExceptionHandler({PasswordMismatchException.class, UserAlreadyExistException.class, TableAlreadyHaveOpenOrderException.class})
     protected ResponseEntity<Object> handleConflict( RuntimeException ex ) {
 
         CmaExceptionBean cmaException = new CmaExceptionBean( CONFLICT );
@@ -25,7 +25,14 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>( cmaException, cmaException.getStatus() );
     }
 
-    @ExceptionHandler({ProductNotFoundException.class, ProductInOrderNotFoundException.class, UserNotFoundException.class})
+    @ExceptionHandler({
+            ProductNotFoundException.class,
+            ProductInOrderNotFoundException.class,
+            UserNotFoundException.class,
+            NotFoundOpenOrderException.class,
+            OrderNotFoundException.class,
+            TableNotFoundException.class
+    })
     protected ResponseEntity<Object> handleNotFound( RuntimeException ex ) {
 
         CmaExceptionBean cmaException = new CmaExceptionBean( NOT_FOUND );

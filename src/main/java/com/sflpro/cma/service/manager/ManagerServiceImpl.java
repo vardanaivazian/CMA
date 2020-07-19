@@ -14,8 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -102,13 +100,5 @@ public class ManagerServiceImpl implements ManagerService {
                 .id( product.getId() )
                 .name( product.getName() )
                 .build();
-    }
-
-    private List<ProductDto> to(List<Product> products) {
-        List<ProductDto> productDtoList = new ArrayList<>( products.size() );
-        for( Product product : products ) {
-            productDtoList.add( to( product ) );
-        }
-        return productDtoList;
     }
 }

@@ -12,6 +12,8 @@ public interface WaiterService {
 
     OrderDto createOrder( OrderDto orderDto );
 
+    OrderDto updateOrder( OrderDto orderDto );
+
     ProductInOrderDto createProductInOrder( ProductInOrderDto productInOrderDto );
 
     ProductInOrderDto updateProductInOrder( ProductInOrderDto productInOrderDto );

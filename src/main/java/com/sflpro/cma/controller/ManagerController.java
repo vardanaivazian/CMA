@@ -23,7 +23,7 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
 @RequestMapping(value = "/api/v1/manager")
-@Api(tags = "manager-api", description = "Manager REST APIs")
+@Api(tags = "manager-api")
 public class ManagerController {
 
     private final ManagerService managerService;

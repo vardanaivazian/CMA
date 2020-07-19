@@ -9,7 +9,7 @@ import lombok.Setter;
 @Builder
 public class ProductInOrderDto {
     private Long id;
-    private OrderDto order;
+    private Long orderId;
     private Long productId;
     private int amount;
 }
